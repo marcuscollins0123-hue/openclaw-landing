@@ -134,34 +134,34 @@
 <!-- Navigation Drawer -->
 <aside class="fixed left-0 top-0 h-full z-[60] flex flex-col p-6 bg-surface-container dark:bg-surface-container w-80 shadow-lg -translate-x-full" id="drawer">
 <div class="mb-12 flex justify-between items-center">
-<a class="font-headline-lg text-headline-lg font-bold text-primary" href="{{DATA:SCREEN:SCREEN_109}}">BixiShell</a>
+<a class="font-headline-lg text-headline-lg font-bold text-primary" href="{{index.html}}">BixiShell</a>
 <button class="text-on-surface" onclick="toggleDrawer()">
 <span class="material-symbols-outlined">close</span>
 </button>
 </div>
 <nav class="flex flex-col gap-2 flex-grow">
-<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_103}}">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{dashboard.html}}">
 <span class="material-symbols-outlined">dashboard</span>
 <span class="font-body-md text-body-md">Dashboard</span>
 </a>
-<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_105}}">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{services.html}}">
 <span class="material-symbols-outlined">token</span>
 <span class="font-body-md text-body-md">Services</span>
 </a>
-<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_7}}">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{invoices.html}}">
 <span class="material-symbols-outlined">receipt_long</span>
 <span class="font-body-md text-body-md">Invoices</span>
 </a>
-<a class="flex items-center gap-4 bg-primary-container/20 text-primary rounded-xl px-4 py-3 scale-98 transition-transform" href="{{DATA:SCREEN:SCREEN_3}}">
+<a class="flex items-center gap-4 bg-primary-container/20 text-primary rounded-xl px-4 py-3 scale-98 transition-transform" href="{{contact.html}}">
 <span class="material-symbols-outlined">support_agent</span>
 <span class="font-body-md text-body-md">Support</span>
 </a>
-<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_9}}">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{settings.html}}">
 <span class="material-symbols-outlined">settings</span>
 <span class="font-body-md text-body-md">Settings</span>
 </a>
 <div class="my-4 border-t border-outline-variant/10"></div>
-<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_107}}">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{about.html}}">
 <span class="material-symbols-outlined">info</span>
 <span class="font-body-md text-body-md">About</span>
 </a>
@@ -174,18 +174,18 @@
 <button class="p-2 rounded-full hover:bg-surface-variant/30 transition-all active:scale-95" onclick="toggleDrawer()">
 <span class="material-symbols-outlined text-primary">menu</span>
 </button>
-<a class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" href="{{DATA:SCREEN:SCREEN_109}}">
+<a class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" href="{{index.html}}">
                     BixiShell
                 </a>
 </div>
 <nav class="hidden md:flex items-center gap-8">
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="{{DATA:SCREEN:SCREEN_103}}">Dashboard</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="{{DATA:SCREEN:SCREEN_105}}">Services</a>
-<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="{{DATA:SCREEN:SCREEN_7}}">Invoices</a>
-<a class="text-primary font-bold font-label-sm text-label-sm" href="{{DATA:SCREEN:SCREEN_3}}">Support</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="{{dashboard.html}}">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="{{services.html}}">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="{{invoices.html}}">Invoices</a>
+<a class="text-primary font-bold font-label-sm text-label-sm" href="{{contact.html}}">Support</a>
 </nav>
 <div class="flex items-center gap-2">
-<a class="p-2 rounded-full hover:bg-surface-variant/30 transition-all active:scale-95" href="{{DATA:SCREEN:SCREEN_9}}">
+<a class="p-2 rounded-full hover:bg-surface-variant/30 transition-all active:scale-95" href="{{settings.html}}">
 <span class="material-symbols-outlined text-primary">account_circle</span>
 </a>
 </div>
@@ -240,23 +240,23 @@
 <footer class="w-full bg-surface-container-lowest border-t border-outline-variant/10 mt-auto">
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max-width mx-auto">
 <div class="space-y-4">
-<a class="font-headline-lg-mobile text-headline-lg-mobile font-black text-on-surface" href="{{DATA:SCREEN:SCREEN_109}}">BixiShell</a>
+<a class="font-headline-lg-mobile text-headline-lg-mobile font-black text-on-surface" href="{{index.html}}">BixiShell</a>
 <p class="text-on-surface-variant font-body-md text-body-md">Architecting the future of secure, distributed infrastructure with crystalline precision.</p>
 </div>
 <div class="space-y-4">
 <h4 class="text-primary font-bold font-label-sm text-label-sm uppercase tracking-widest">Platform</h4>
 <nav class="flex flex-col gap-2">
-<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{DATA:SCREEN:SCREEN_103}}">Dashboard</a>
-<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{DATA:SCREEN:SCREEN_105}}">Services</a>
-<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{DATA:SCREEN:SCREEN_7}}">Invoices</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{dashboard.html}}">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{services.html}}">Services</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{invoices.html}}">Invoices</a>
 </nav>
 </div>
 <div class="space-y-4">
 <h4 class="text-primary font-bold font-label-sm text-label-sm uppercase tracking-widest">Resources</h4>
 <nav class="flex flex-col gap-2">
-<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{DATA:SCREEN:SCREEN_107}}">About Us</a>
-<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{DATA:SCREEN:SCREEN_3}}">Contact Support</a>
-<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{DATA:SCREEN:SCREEN_9}}">Settings</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{about.html}}">About Us</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{contact.html}}">Contact Support</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="{{settings.html}}">Settings</a>
 </nav>
 </div>
 <div class="space-y-4">
