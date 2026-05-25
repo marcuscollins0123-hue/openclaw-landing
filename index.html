@@ -1,172 +1,245 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Operations Director — Your Business Gets a Brain This Weekend</title>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Contact BixiShell</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;family=Geist:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.6; }
-  .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
-  
-  /* Hero */
-  .hero { text-align: center; padding: 5rem 0 3rem; }
-  .hero h1 { font-size: 2.8rem; font-weight: 700; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
-  .hero p { font-size: 1.2rem; color: #a0a0b0; max-width: 600px; margin: 0 auto 2rem; }
-  .hero .meta { color: #666; font-size: 0.9rem; margin-top: 2rem; }
-  
-  /* Buttons */
-  .btn { display: inline-block; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.2s; cursor: pointer; border: none; }
-  .btn-primary { background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(99,102,241,0.3); }
-  .btn-outline { background: transparent; color: #a0a0b0; border: 1px solid #333; }
-  .btn-outline:hover { border-color: #6366f1; color: #fff; }
-  
-  /* Tiers */
-  .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
-  .tier { background: #12121a; border: 1px solid #222; border-radius: 12px; padding: 2rem; position: relative; transition: all 0.2s; }
-  .tier:hover { border-color: #333; transform: translateY(-3px); }
-  .tier.featured { border-color: #6366f1; box-shadow: 0 0 30px rgba(99,102,241,0.1); }
-  .tier.featured::before { content: 'BEST VALUE'; position: absolute; top: -10px; right: 20px; background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; }
-  .tier h3 { font-size: 1.1rem; color: #888; margin-bottom: 0.5rem; }
-  .tier .price { font-size: 2.5rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; }
-  .tier .price span { font-size: 1rem; color: #666; }
-  .tier ul { list-style: none; margin: 1.5rem 0; }
-  .tier ul li { padding: 0.4rem 0; color: #b0b0b0; font-size: 0.9rem; }
-  .tier ul li::before { content: '→ '; color: #6366f1; }
-  .tier .btn { width: 100%; text-align: center; margin-top: 1rem; }
-  
-  /* How it works */
-  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin: 4rem 0; }
-  .step { text-align: center; }
-  .step .number { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #a855f7); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: 700; font-size: 1.1rem; }
-  .step h4 { margin-bottom: 0.5rem; }
-  .step p { font-size: 0.9rem; color: #888; }
-  
-  /* FAQ */
-  .faq { margin: 3rem 0; }
-  .faq details { border-bottom: 1px solid #222; padding: 1rem 0; }
-  .faq summary { cursor: pointer; font-weight: 600; color: #d0d0d0; }
-  .faq details p { margin-top: 0.5rem; color: #888; font-size: 0.95rem; }
-  
-  /* Footer */
-  .footer { text-align: center; padding: 3rem 0; color: #444; font-size: 0.85rem; }
-  
-  @media (max-width: 600px) {
-    .hero h1 { font-size: 2rem; }
-    .tiers { grid-template-columns: 1fr; }
-  }
-</style>
+        body {
+            background-color: #13131b;
+            color: #e4e1ed;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(22, 22, 30, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-primary-gradient {
+            background: linear-gradient(135deg, #c0c1ff 0%, #ddb7ff 100%);
+            color: #1000a9;
+            box-shadow: 0 0 20px rgba(192, 193, 255, 0.3);
+        }
+        .btn-primary-gradient:hover {
+            opacity: 0.9;
+            transform: scale(0.98);
+        }
+        .low-poly-mask {
+            mask-image: linear-gradient(to bottom, black, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+            opacity: 0.05;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#1f1f27",
+                        "on-background": "#e4e1ed",
+                        "surface-variant": "#34343d",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "tertiary": "#ffb783",
+                        "surface-bright": "#393841",
+                        "primary": "#c0c1ff",
+                        "outline": "#908fa0",
+                        "surface-container-lowest": "#0d0d15",
+                        "primary-container": "#8083ff",
+                        "surface": "#13131b",
+                        "surface-container-highest": "#34343d",
+                        "outline-variant": "#464554",
+                        "on-secondary-container": "#d6a9ff",
+                        "on-tertiary-fixed": "#301400",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#d97721",
+                        "surface-container-high": "#292932",
+                        "secondary": "#ddb7ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#13131b",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-primary": "#1000a9",
+                        "secondary-container": "#6f00be",
+                        "on-surface": "#e4e1ed",
+                        "inverse-primary": "#494bd6",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary": "#4f2500",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-fixed": "#2c0051",
+                        "on-tertiary-container": "#452000",
+                        "on-surface-variant": "#c7c4d7",
+                        "primary-fixed": "#e1e0ff",
+                        "inverse-surface": "#e4e1ed",
+                        "inverse-on-surface": "#303038",
+                        "secondary-fixed": "#f0dbff",
+                        "on-primary-container": "#0d0096",
+                        "surface-container-low": "#1b1b23",
+                        "on-secondary": "#490080",
+                        "on-primary-fixed": "#07006c",
+                        "tertiary-fixed": "#ffdcc5",
+                        "background": "#13131b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "40px",
+                        "container-max-width": "1440px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-sm": ["Geist"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "display-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            min-height: 100dvh;
+        }
+    </style>
 </head>
-<body>
-<div class="container">
-  
-  <!-- Hero -->
-  <div class="hero">
-    <h1>Your Business Gets an AI Brain This Weekend</h1>
-    <p>Fully installed, Telegram-connected, voice-ready. You talk. It works. No typing required.</p>
-    <a href="#tiers" class="btn btn-primary">See Plans ↓</a>
-    <div class="meta">Live deployment in 1–5 days • No technical skills needed • Cancel anytime</div>
-  </div>
-  
-  <!-- How it works -->
-  <div class="steps">
-    <div class="step">
-      <div class="number">1</div>
-      <h4>30-min call</h4>
-      <p>I learn your workflow. You see a live demo. No commitment.</p>
-    </div>
-    <div class="step">
-      <div class="number">2</div>
-      <h4>I deploy</h4>
-      <p>Automated install on your VPS. Agent team configured to your business.</p>
-    </div>
-    <div class="step">
-      <div class="number">3</div>
-      <h4>You talk</h4>
-      <p>Open Telegram. Say what you need. Your agents handle the rest.</p>
-    </div>
-  </div>
-  
-  <!-- Tiers -->
-  <div class="tiers" id="tiers">
-    <div class="tier">
-      <h3>SOLO OPERATOR</h3>
-      <div class="price">$997 <span>one-time</span></div>
-      <p style="color:#888;font-size:0.85rem;">For freelancers and solopreneurs</p>
-      <ul>
-        <li>1 agent — your personal assistant</li>
-        <li>Telegram voice &amp; text</li>
-        <li>Daily briefing automation</li>
-        <li>30-min setup call + training</li>
-        <li>14 days support</li>
-      </ul>
-      <a href="mailto:bixi.shell@gmail.com?subject=Solo%20Operator&body=Hi%2C%20I%27m%20interested%20in%20the%20Solo%20Operator%20tier." class="btn btn-outline">Get Started</a>
-    </div>
-    
-    <div class="tier featured">
-      <h3>OPERATIONS CORE</h3>
-      <div class="price">$2,497 <span>one-time</span></div>
-      <p style="color:#888;font-size:0.85rem;">For small teams and consultants</p>
-      <ul>
-        <li>4 specialist agents</li>
-        <li>Telegram + email triage</li>
-        <li>Market &amp; competitor monitoring</li>
-        <li>Custom personalities &amp; tone</li>
-        <li>30 days priority support</li>
-      </ul>
-      <a href="mailto:bixi.shell@gmail.com?subject=Operations%20Core&body=Hi%2C%20I%27m%20interested%20in%20the%20Operations%20Core%20tier." class="btn btn-primary">Get Started</a>
-    </div>
-    
-    <div class="tier">
-      <h3>FULL COMMAND</h3>
-      <div class="price">$4,997 <span>one-time</span></div>
-      <p style="color:#888;font-size:0.85rem;">For business owners who want it all</p>
-      <ul>
-        <li>8+ agent team</li>
-        <li>All channels (Telegram, email, Signal)</li>
-        <li>VPS provisioning + security</li>
-        <li>Custom workflows &amp; automation</li>
-        <li>60 days priority support</li>
-      </ul>
-      <a href="mailto:bixi.shell@gmail.com?subject=Full%20Command&body=Hi%2C%20I%27m%20interested%20in%20the%20Full%20Command%20tier." class="btn btn-outline">Get Started</a>
-    </div>
-  </div>
-  
-  <!-- FAQ -->
-  <div class="faq">
-    <h2 style="margin-bottom:1.5rem;">Questions</h2>
-    
-    <details>
-      <summary>Do I need technical skills?</summary>
-      <p>No. I handle the entire installation remotely. You need a VPS ($10–30/month) and 30 minutes for the setup call.</p>
-    </details>
-    
-    <details>
-      <summary>What models does it use?</summary>
-      <p>Multiple. The system routes simple tasks to cheap models and deep analysis to powerful ones. You're not locked into one provider.</p>
-    </details>
-    
-    <details>
-      <summary>Can it replace a human team member?</summary>
-      <p>It absorbs 60–80% of operations workflows. Think of it as a junior ops person who costs $30/month in API usage, never sleeps, and works in Telegram.</p>
-    </details>
-    
-    <details>
-      <summary>What if I don't like it?</summary>
-      <p>14-day money-back on the Solo Operator tier. You keep the documentation.</p>
-    </details>
-    
-    <details>
-      <summary>Who built this?</summary>
-      <p>I did. I'm an Industrial Designer + MBA graduate. My own life runs through this system — portfolio, legal case, email, research. It's not theoretical.</p>
-    </details>
-  </div>
-  
-  <!-- Footer -->
-  <div class="footer">
-    bixi.shell@gmail.com &nbsp;·&nbsp; Built by Marcus Collins &nbsp;·&nbsp; Deployed by Leo 🌀
-  </div>
+<body class="bg-background text-on-background font-body-md flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max-width mx-auto">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-variant/30 transition-all active:scale-95">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<div class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    BixiShell
+                </div>
 </div>
-</body>
-</html>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm" href="#">Invoices</a>
+<a class="text-primary font-bold font-label-sm text-label-sm" href="#">Support</a>
+</nav>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-variant/30 transition-all active:scale-95">
+<span class="material-symbols-outlined text-primary">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center pt-32 pb-20 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="w-full max-w-2xl text-center flex flex-col items-center space-y-12">
+<!-- Content Section -->
+<div class="space-y-6">
+<h1 class="font-display-lg text-display-lg text-primary">Get in Touch</h1>
+<p class="text-on-surface-variant font-body-md text-body-md max-w-md mx-auto leading-relaxed">
+                    We are here to assist with your digital infrastructure. Reach out to our technical team for support, inquiries, or custom solutions.
+                </p>
+</div>
+<!-- Contact Info Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+<a class="flex flex-col items-center gap-4 group" href="mailto:bixi.shell@gmail.com">
+<div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/20 transition-all group-hover:border-primary/50 group-hover:bg-primary/5">
+<span class="material-symbols-outlined text-primary text-3xl">mail</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Technical Support</p>
+<p class="font-body-md text-body-md font-bold group-hover:text-primary transition-colors">bixi.shell@gmail.com</p>
+</div>
+</a>
+<div class="flex flex-col items-center gap-4 group">
+<div class="w-16 h-16 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/20 transition-all">
+<span class="material-symbols-outlined text-primary text-3xl">public</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Global HQ</p>
+<p class="font-body-md text-body-md font-bold">Digital Valley, SV 94043</p>
+</div>
+</div>
+</div>
+<!-- Social Links -->
+<div class="flex gap-6 pt-4">
+<a class="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/10 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all hover:scale-110" href="https://instagram.com/bixi.shell" target="_blank">
+<span class="sr-only">Instagram</span>
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a class="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant/10 flex items-center justify-center text-on-surface-variant hover:text-primary hover:border-primary transition-all hover:scale-110" href="https://facebook.com/BixiShell" target="_blank">
+<span class="sr-only">Facebook</span>
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"></path></svg>
+</a>
+</div>
+</div>
+</main>
+<!-- Visual Accent Element -->
+<div class="fixed -bottom-48 -right-48 w-[600px] h-[600px] bg-primary/10 blur-[120px] rounded-full pointer-events-none"></div>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-outline-variant/10 mt-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max-width mx-auto">
+<div class="space-y-4">
+<div class="font-headline-lg-mobile text-headline-lg-mobile font-black text-on-surface">BixiShell</div>
+<p class="text-on-surface-variant font-body-md text-body-md">Architecting the future of secure, distributed infrastructure with crystalline precision.</p>
+</div>
+<div class="space-y-4">
+<h4 class="text-primary font-bold font-label-sm text-label-sm uppercase tracking-widest">Platform</h4>
+<nav class="flex flex-col gap-2">
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="#">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="#">Network Stats</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="#">API Reference</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="text-primary font-bold font-label-sm text-label-sm uppercase tracking-widest">Resources</h4>
+<nav class="flex flex-col gap-2">
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="mailto:bixi.shell@gmail.com">Contact Support</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h4 class="text-primary font-bold font-label-sm text-label-sm uppercase tracking-widest">Social</h4>
+<nav class="flex flex-col gap-2">
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="https://instagram.com/bixi.shell" target="_blank">Instagram</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="https://facebook.com/BixiShell" target="_blank">Facebook</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-body-md text-body-md" href="#">LinkedIn</a>
+</nav>
+</div>
+</div>
+<div class="max-w-container-max-width mx-auto px-margin-desktop py-6 border-t border-outline-variant/10 text-center text-on-surface-variant font-label-sm text-label-sm">
+            © 2024 BixiShell. All rights reserved. Built for the decentralized era.
+        </div>
+</footer>
+<script>
+        // Background floating effect for the accent glow
+        const glow = document.querySelector('.blur-\\[120px\\]');
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth - 0.5) * 40;
+            const y = (e.clientY / window.innerHeight - 0.5) * 40;
+            glow.style.transform = `translate(${x}px, ${y}px)`;
+        });
+    </script>
+</body></html>
