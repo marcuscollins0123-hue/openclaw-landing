@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Operations Director — Your Business Gets a Brain This Weekend</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0a0a0f; color: #e0e0e0; line-height: 1.6; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 2rem; }
+  
+  /* Hero */
+  .hero { text-align: center; padding: 5rem 0 3rem; }
+  .hero h1 { font-size: 2.8rem; font-weight: 700; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+  .hero p { font-size: 1.2rem; color: #a0a0b0; max-width: 600px; margin: 0 auto 2rem; }
+  .hero .meta { color: #666; font-size: 0.9rem; margin-top: 2rem; }
+  
+  /* Buttons */
+  .btn { display: inline-block; padding: 0.8rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.2s; cursor: pointer; border: none; }
+  .btn-primary { background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(99,102,241,0.3); }
+  .btn-outline { background: transparent; color: #a0a0b0; border: 1px solid #333; }
+  .btn-outline:hover { border-color: #6366f1; color: #fff; }
+  
+  /* Tiers */
+  .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+  .tier { background: #12121a; border: 1px solid #222; border-radius: 12px; padding: 2rem; position: relative; transition: all 0.2s; }
+  .tier:hover { border-color: #333; transform: translateY(-3px); }
+  .tier.featured { border-color: #6366f1; box-shadow: 0 0 30px rgba(99,102,241,0.1); }
+  .tier.featured::before { content: 'BEST VALUE'; position: absolute; top: -10px; right: 20px; background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; }
+  .tier h3 { font-size: 1.1rem; color: #888; margin-bottom: 0.5rem; }
+  .tier .price { font-size: 2.5rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem; }
+  .tier .price span { font-size: 1rem; color: #666; }
+  .tier ul { list-style: none; margin: 1.5rem 0; }
+  .tier ul li { padding: 0.4rem 0; color: #b0b0b0; font-size: 0.9rem; }
+  .tier ul li::before { content: '→ '; color: #6366f1; }
+  .tier .btn { width: 100%; text-align: center; margin-top: 1rem; }
+  
+  /* How it works */
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; margin: 4rem 0; }
+  .step { text-align: center; }
+  .step .number { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, #6366f1, #a855f7); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-weight: 700; font-size: 1.1rem; }
+  .step h4 { margin-bottom: 0.5rem; }
+  .step p { font-size: 0.9rem; color: #888; }
+  
+  /* FAQ */
+  .faq { margin: 3rem 0; }
+  .faq details { border-bottom: 1px solid #222; padding: 1rem 0; }
+  .faq summary { cursor: pointer; font-weight: 600; color: #d0d0d0; }
+  .faq details p { margin-top: 0.5rem; color: #888; font-size: 0.95rem; }
+  
+  /* Footer */
+  .footer { text-align: center; padding: 3rem 0; color: #444; font-size: 0.85rem; }
+  
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 2rem; }
+    .tiers { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Your Business Gets an AI Brain This Weekend</h1>
+    <p>Fully installed, Telegram-connected, voice-ready. You talk. It works. No typing required.</p>
+    <a href="#tiers" class="btn btn-primary">See Plans ↓</a>
+    <div class="meta">Live deployment in 1–5 days • No technical skills needed • Cancel anytime</div>
+  </div>
+  
+  <!-- How it works -->
+  <div class="steps">
+    <div class="step">
+      <div class="number">1</div>
+      <h4>30-min call</h4>
+      <p>I learn your workflow. You see a live demo. No commitment.</p>
+    </div>
+    <div class="step">
+      <div class="number">2</div>
+      <h4>I deploy</h4>
+      <p>Automated install on your VPS. Agent team configured to your business.</p>
+    </div>
+    <div class="step">
+      <div class="number">3</div>
+      <h4>You talk</h4>
+      <p>Open Telegram. Say what you need. Your agents handle the rest.</p>
+    </div>
+  </div>
+  
+  <!-- Tiers -->
+  <div class="tiers" id="tiers">
+    <div class="tier">
+      <h3>SOLO OPERATOR</h3>
+      <div class="price">$997 <span>one-time</span></div>
+      <p style="color:#888;font-size:0.85rem;">For freelancers and solopreneurs</p>
+      <ul>
+        <li>1 agent — your personal assistant</li>
+        <li>Telegram voice &amp; text</li>
+        <li>Daily briefing automation</li>
+        <li>30-min setup call + training</li>
+        <li>14 days support</li>
+      </ul>
+      <a href="mailto:bixi.shell@gmail.com?subject=Solo%20Operator&body=Hi%2C%20I%27m%20interested%20in%20the%20Solo%20Operator%20tier." class="btn btn-outline">Get Started</a>
+    </div>
+    
+    <div class="tier featured">
+      <h3>OPERATIONS CORE</h3>
+      <div class="price">$2,497 <span>one-time</span></div>
+      <p style="color:#888;font-size:0.85rem;">For small teams and consultants</p>
+      <ul>
+        <li>4 specialist agents</li>
+        <li>Telegram + email triage</li>
+        <li>Market &amp; competitor monitoring</li>
+        <li>Custom personalities &amp; tone</li>
+        <li>30 days priority support</li>
+      </ul>
+      <a href="mailto:bixi.shell@gmail.com?subject=Operations%20Core&body=Hi%2C%20I%27m%20interested%20in%20the%20Operations%20Core%20tier." class="btn btn-primary">Get Started</a>
+    </div>
+    
+    <div class="tier">
+      <h3>FULL COMMAND</h3>
+      <div class="price">$4,997 <span>one-time</span></div>
+      <p style="color:#888;font-size:0.85rem;">For business owners who want it all</p>
+      <ul>
+        <li>8+ agent team</li>
+        <li>All channels (Telegram, email, Signal)</li>
+        <li>VPS provisioning + security</li>
+        <li>Custom workflows &amp; automation</li>
+        <li>60 days priority support</li>
+      </ul>
+      <a href="mailto:bixi.shell@gmail.com?subject=Full%20Command&body=Hi%2C%20I%27m%20interested%20in%20the%20Full%20Command%20tier." class="btn btn-outline">Get Started</a>
+    </div>
+  </div>
+  
+  <!-- FAQ -->
+  <div class="faq">
+    <h2 style="margin-bottom:1.5rem;">Questions</h2>
+    
+    <details>
+      <summary>Do I need technical skills?</summary>
+      <p>No. I handle the entire installation remotely. You need a VPS ($10–30/month) and 30 minutes for the setup call.</p>
+    </details>
+    
+    <details>
+      <summary>What models does it use?</summary>
+      <p>Multiple. The system routes simple tasks to cheap models and deep analysis to powerful ones. You're not locked into one provider.</p>
+    </details>
+    
+    <details>
+      <summary>Can it replace a human team member?</summary>
+      <p>It absorbs 60–80% of operations workflows. Think of it as a junior ops person who costs $30/month in API usage, never sleeps, and works in Telegram.</p>
+    </details>
+    
+    <details>
+      <summary>What if I don't like it?</summary>
+      <p>14-day money-back on the Solo Operator tier. You keep the documentation.</p>
+    </details>
+    
+    <details>
+      <summary>Who built this?</summary>
+      <p>I did. I'm an Industrial Designer + MBA graduate. My own life runs through this system — portfolio, legal case, email, research. It's not theoretical.</p>
+    </details>
+  </div>
+  
+  <!-- Footer -->
+  <div class="footer">
+    bixi.shell@gmail.com &nbsp;·&nbsp; Built by Marcus Collins &nbsp;·&nbsp; Deployed by Leo 🌀
+  </div>
+</div>
+</body>
+</html>
