@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>404 — BixiShell</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;family=Geist:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link 
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#1f1f27",
+                        "on-background": "#e4e1ed",
+                        "surface-variant": "#34343d",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "tertiary": "#ffb783",
+                        "surface-bright": "#393841",
+                        "primary": "#c0c1ff",
+                        "outline": "#908fa0",
+                        "surface-container-lowest": "#0d0d15",
+                        "primary-container": "#8083ff",
+                        "surface": "#13131b",
+                        "surface-container-highest": "#34343d",
+                        "outline-variant": "#464554",
+                        "on-secondary-container": "#d6a9ff",
+                        "on-tertiary-fixed": "#301400",
+                        "error": "#ffb4ab",
+                        "tertiary-container": "#d97721",
+                        "surface-container-high": "#292932",
+                        "secondary": "#ddb7ff",
+                        "on-error-container": "#ffdad6",
+                        "surface-dim": "#13131b",
+                        "error-container": "#93000a",
+                        "on-error": "#690005",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "on-primary": "#1000a9",
+                        "secondary-container": "#6f00be",
+                        "on-surface": "#e4e1ed",
+                        "inverse-primary": "#494bd6",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "surface-tint": "#c0c1ff",
+                        "on-tertiary": "#4f2500",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-secondary-fixed": "#2c0051",
+                        "on-tertiary-container": "#452000",
+                        "on-surface-variant": "#c7c4d7",
+                        "primary-fixed": "#e1e0ff",
+                        "inverse-surface": "#e4e1ed",
+                        "inverse-on-surface": "#303038",
+                        "secondary-fixed": "#f0dbff",
+                        "on-primary-container": "#0d0096",
+                        "surface-container-low": "#1b1b23",
+                        "on-secondary": "#490080",
+                        "on-primary-fixed": "#07006c",
+                        "tertiary-fixed": "#ffdcc5",
+                        "background": "#13131b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "margin-desktop": "40px",
+                        "container-max-width": "1440px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "label-sm": ["Geist"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "body-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background low-poly-bg font-body-md overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max-width mx-auto">
+<a class="flex items-center gap-2" href="index.html">
+<span class="material-symbols-outlined text-primary font-bold text-3xl" style="font-variation-settings: 'FILL' 1;">egg</span>
+<span class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">BixiShell</span>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm uppercase tracking-widest" href="services.html">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm uppercase tracking-widest" href="about.html">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-300 font-label-sm text-label-sm uppercase tracking-widest" href="contact.html">Contact</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold font-label-sm text-label-sm uppercase tracking-widest" href="dashboard.html">Dashboard</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="material-symbols-outlined text-primary cursor-pointer hover:opacity-80 transition-all active:scale-95" href="settings.html">account_circle</a>
+<button class="md:hidden material-symbols-outlined text-primary" id="drawer-toggle">menu</button>
+</div>
+</div>
+</header>
+<!-- Navigation Drawer (Mobile) -->
+<div class="fixed inset-0 z-[60] pointer-events-none" id="drawer-overlay">
+<div class="absolute inset-0 bg-black/50 opacity-0 transition-opacity duration-300" id="drawer-backdrop"></div>
+<div class="absolute top-0 right-0 h-full w-3/4 max-w-xs bg-surface shadow-2xl translate-x-full transition-transform duration-300 flex flex-col pointer-events-auto" id="mobile-drawer">
+<div class="flex items-center justify-between p-6 border-b border-outline-variant/10">
+<span class="font-headline-lg text-xl font-bold text-primary">Menu</span>
+<button class="material-symbols-outlined text-on-surface" id="drawer-close">close</button>
+</div>
+<nav class="flex flex-col p-6 gap-6">
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary font-label-sm uppercase tracking-widest" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary font-label-sm uppercase tracking-widest" href="services.html">
+<span class="material-symbols-outlined">token</span> Services
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary font-label-sm uppercase tracking-widest" href="invoices.html">
+<span class="material-symbols-outlined">receipt_long</span> Invoices
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary font-label-sm uppercase tracking-widest" href="contact.html">
+<span class="material-symbols-outlined">contact_support</span> Contact
+            </a>
+<a class="flex items-center gap-4 text-on-surface-variant hover:text-primary font-label-sm uppercase tracking-widest" href="settings.html">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+</nav>
+</div>
+</div>
+<main class="pt-32">
+<!-- Hero Section -->
+<section class="relative px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto mb-32 min-h-[70vh] flex flex-col items-center justify-center text-center hero-glow">
+<h1 class="font-display-lg text-display-lg md:text-7xl mb-6 tracking-tighter">
+                Page Not Found
+            </h1>
+<p class="font-body-md text-on-surface-variant max-w-2xl mx-auto mb-10 text-lg md:text-xl leading-relaxed">
+                The shell you're looking for doesn't exist.
+            </p>
+<div class="flex flex-col md:flex-row gap-6">
+<a class="px-10 py-5 bg-gradient-to-r from-primary-container to-secondary-container text-white rounded-full font-bold text-lg hover:shadow-[0_0_20px_rgba(128,131,255,0.4)] transition-all active:scale-95 flex items-center gap-2 group" href="contact.html">
+                    Back to Home
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+<button class="px-10 py-5 glass-panel rounded-full font-bold text-lg text-primary hover:bg-surface-variant/30 transition-all active:scale-95 border border-primary/20" onclick="document.getElementById('how-it-works').scrollIntoView({behavior: 'smooth'})">
+                    See How It Works
+                </button>
+</div>
+</section>
+</main>
+
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max-width mx-auto">
+<div class="col-span-1 md:col-span-2 lg:col-span-1">
+<div class="flex items-center gap-2 mb-6">
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-black text-on-surface">BixiShell</span>
+</div>
+<p class="text-on-surface-variant font-body-md text-body-md mb-6">Building the exoskeleton for the modern intelligent enterprise.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="font-label-sm text-primary uppercase tracking-widest mb-2">Platform</h5>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm hover:underline decoration-primary/50" href="dashboard.html">Dashboard</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm hover:underline decoration-primary/50" href="services.html">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm hover:underline decoration-primary/50" href="invoices.html">Invoices</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-sm text-label-sm hover:underline decoration-primary/50" href="about.html">About</a>
+</div>
+<div class="flex flex-col gap-3">
+<h5 class="font-label-sm text-primary uppercase tracking-widest mb-2">Legal</h5>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-label-sm text-label-sm hover:underline decoration-primary/50" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-label-sm text-label-sm hover:underline decoration-primary/50" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors font-label-sm text-label-sm hover:underline decoration-primary/50" href="contact.html">Contact</a>
+</div>
+<div class="flex flex-col justify-end">
+<div class="flex gap-4 mb-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="https://instagram.com/bixi.shell" target="_blank">Instagram</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="https://facebook.com/BixiShell" target="_blank">Facebook</a>
+</div>
+<p class="text-on-surface-variant font-label-sm text-label-sm">© 2024 BixiShell. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+    // Micro-interaction for hover effects on cards
+    document.querySelectorAll('.glass-panel').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // Drawer Logic
+    const drawerToggle = document.getElementById('drawer-toggle');
+    const drawerClose = document.getElementById('drawer-close');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerBackdrop = document.getElementById('drawer-backdrop');
+
+    function toggleDrawer(open) {
+        if (open) {
+            drawerOverlay.classList.remove('pointer-events-none');
+            mobileDrawer.classList.remove('translate-x-full');
+            drawerBackdrop.classList.remove('opacity-0');
+            drawerBackdrop.classList.add('opacity-100');
+        } else {
+            drawerOverlay.classList.add('pointer-events-none');
+            mobileDrawer.classList.add('translate-x-full');
+            drawerBackdrop.classList.remove('opacity-100');
+            drawerBackdrop.classList.add('opacity-0');
+        }
+    }
+
+    drawerToggle.addEventListener('click', () => toggleDrawer(true));
+    drawerClose.addEventListener('click', () => toggleDrawer(false));
+    drawerBackdrop.addEventListener('click', () => toggleDrawer(false));
+</script>
+</body></html>
