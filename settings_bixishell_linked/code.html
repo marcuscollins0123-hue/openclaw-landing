@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings - BixiShell Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-container": "#6f00be",
+                        "surface-tint": "#c0c1ff",
+                        "on-primary": "#1000a9",
+                        "primary-fixed": "#e1e0ff",
+                        "on-secondary-fixed": "#2c0051",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "surface-container-lowest": "#0d0d15",
+                        "on-tertiary-fixed-variant": "#703700",
+                        "outline": "#908fa0",
+                        "inverse-on-surface": "#303038",
+                        "surface-bright": "#393841",
+                        "secondary-fixed": "#f0dbff",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "on-error": "#690005",
+                        "surface-container-highest": "#34343d",
+                        "surface": "#13131b",
+                        "on-background": "#e4e1ed",
+                        "surface-container": "#1f1f27",
+                        "on-tertiary-container": "#452000",
+                        "surface-container-low": "#1b1b23",
+                        "error-container": "#93000a",
+                        "on-surface": "#e4e1ed",
+                        "error": "#ffb4ab",
+                        "tertiary-fixed": "#ffdcc5",
+                        "tertiary-container": "#d97721",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "secondary": "#ddb7ff",
+                        "primary": "#c0c1ff",
+                        "on-error-container": "#ffdad6",
+                        "inverse-surface": "#e4e1ed",
+                        "on-surface-variant": "#c7c4d7",
+                        "on-secondary-container": "#d6a9ff",
+                        "primary-container": "#8083ff",
+                        "inverse-primary": "#494bd6",
+                        "on-primary-fixed": "#07006c",
+                        "on-secondary": "#490080",
+                        "tertiary": "#ffb783",
+                        "outline-variant": "#464554",
+                        "on-tertiary-fixed": "#301400",
+                        "background": "#13131b",
+                        "on-tertiary": "#4f2500",
+                        "surface-container-high": "#292932",
+                        "tertiary-fixed-dim": "#ffb783",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "surface-dim": "#13131b",
+                        "on-primary-container": "#0d0096",
+                        "surface-variant": "#34343d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "container-max-width": "1440px",
+                        "gutter": "24px",
+                        "margin-desktop": "40px",
+                        "margin-mobile": "16px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "display-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Geist"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0a0f;
+            color: #e4e1ed;
+            font-family: 'Hanken Grotesk', sans-serif;
+            overflow-x: hidden;
+            min-height: max(884px, 100dvh);
+        }
+        .glass-panel {
+            background: rgba(22, 22, 30, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .purple-gradient-btn {
+            background: linear-gradient(135deg, #c0c1ff 0%, #ddb7ff 100%);
+            color: #1000a9;
+        }
+        .toggle-switch:checked + .toggle-bg {
+            background: linear-gradient(135deg, #c0c1ff 0%, #ddb7ff 100%);
+        }
+        .toggle-switch:checked + .toggle-bg .toggle-dot {
+            transform: translateX(1.25rem);
+        }
+        .low-poly-bg {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0l50 50L0 100zM100 0l-50 50 50 50z' fill='%23ffffff' fill-opacity='0.03'/%3E%3C/svg%3E");
+        }
+        #mobile-drawer {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="dark bg-background min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary cursor-pointer md:hidden" onclick="toggleDrawer()">menu</button>
+<a class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" href="{{DATA:SCREEN:SCREEN_109}}">BixiShell</a>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_103}}">Dashboard</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_105}}">Services</a>
+<a class="font-label-sm text-label-sm text-primary dark:text-primary-fixed-dim font-bold" href="{{DATA:SCREEN:SCREEN_9}}">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="material-symbols-outlined text-primary cursor-pointer" href="{{DATA:SCREEN:SCREEN_9}}">account_circle</a>
+</div>
+</div>
+</header>
+<!-- Mobile Navigation Drawer -->
+<div class="fixed inset-0 bg-black/60 z-[60] backdrop-blur-sm hidden" id="drawer-overlay" onclick="toggleDrawer()"></div>
+<aside class="fixed left-0 top-0 h-full z-[70] w-80 bg-surface-container shadow-2xl -translate-x-full md:hidden flex flex-col p-6" id="mobile-drawer">
+<div class="flex items-center justify-between mb-12">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">Portal</span>
+<button class="material-symbols-outlined text-on-surface" onclick="toggleDrawer()">close</button>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_103}}">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_105}}">
+<span class="material-symbols-outlined">token</span>
+<span class="font-body-md">Services</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_7}}">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md">Invoices</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_3}}">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-body-md">Support</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container/20 text-primary rounded-xl px-4 py-3 active:scale-98 transition-transform" href="{{DATA:SCREEN:SCREEN_9}}">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-body-md font-bold">Settings</span>
+</a>
+<div class="my-4 border-t border-outline-variant/10"></div>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_107}}">
+<span class="material-symbols-outlined">info</span>
+<span class="font-body-md">About</span>
+</a>
+</nav>
+</aside>
+<!-- Desktop Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full z-[40] flex flex-col p-6 w-80 bg-surface-container dark:bg-surface-container shadow-lg hidden md:flex">
+<div class="mb-12 pt-4">
+<a class="font-headline-lg text-headline-lg font-bold text-primary" href="{{DATA:SCREEN:SCREEN_109}}">BixiShell Portal</a>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_103}}">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_105}}">
+<span class="material-symbols-outlined">token</span>
+<span class="font-body-md">Services</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_7}}">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-body-md">Invoices</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_3}}">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-body-md">Support</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container/20 text-primary rounded-xl px-4 py-3 active:scale-98 transition-transform" href="{{DATA:SCREEN:SCREEN_9}}">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-body-md font-bold">Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-8 border-t border-outline-variant/10">
+<div class="flex items-center gap-3 px-4">
+<div class="w-10 h-10 rounded-full bg-primary-container/30 overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV_p51wgkOgsaEwJnGjKqoSdFUWPSS6AOkIkOWzeZqvHhSevOx3B_0mY5Fq_soo-VrgKeNLWcHzs4Yz-UVz3212k8ohkypZqwWCyavvAEnFfziouspTLtVF-cyFLZg8gblVqjEkN6oDmtyambkM9OnBel_l9HUXUoEECKRrLEDy8EFAmTluRSsAbVqD271bQTrvHFbxI_qjQY3DPwXIHmhr4B7KifuDokeSx7OKncrVehUDMXjlpa7Bg0xC2J_UdJsCj_5FuimJec"/>
+</div>
+<div>
+<p class="font-label-sm text-on-surface">Alex Rivera</p>
+<p class="text-[10px] text-on-surface-variant uppercase">Pro Plan</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:pl-80 pt-20 min-h-screen">
+<div class="px-margin-mobile md:px-margin-desktop py-12 max-w-5xl">
+<header class="mb-12">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Account Settings</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your digital presence and portal security preferences.</p>
+</header>
+<!-- Bento Layout Sections -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Profile Section -->
+<section class="lg:col-span-2 glass-panel rounded-[2rem] p-8 low-poly-bg">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">person_edit</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Profile Identity</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block">FULL NAME</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" type="text" value="Alex Rivera"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block">EMAIL ADDRESS</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" type="email" value="alex.rivera@bixishell.io"/>
+</div>
+<div class="space-y-2 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block">BIO / DESCRIPTION</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant/30 rounded-xl px-4 py-3 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all text-on-surface" rows="3">Senior Infrastructure Architect at Nebula Systems. Managing cloud clusters via BixiShell since 2022.</textarea>
+</div>
+</div>
+<div class="mt-8 flex justify-end">
+<button class="purple-gradient-btn px-6 py-3 rounded-full font-label-sm text-label-sm font-bold active:scale-95 transition-all shadow-lg shadow-primary/20">
+                            SAVE IDENTITY
+                        </button>
+</div>
+</section>
+<!-- Support Anchor -->
+<section class="glass-panel rounded-[2rem] p-8 flex flex-col justify-between border-primary/20 relative overflow-hidden">
+<div class="relative z-10">
+<div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">help_center</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Need Assistance?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Our priority support team is available 24/7 for Enterprise accounts.</p>
+</div>
+<a class="relative z-10 w-full text-center py-4 border border-outline-variant rounded-xl font-label-sm text-label-sm hover:bg-surface-variant/30 transition-all" href="{{DATA:SCREEN:SCREEN_3}}">
+                        CONTACT SUPPORT
+                    </a>
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[160px] text-primary" style="font-variation-settings: 'FILL' 1;">support_agent</span>
+</div>
+</section>
+<!-- Security Section -->
+<section class="glass-panel rounded-[2rem] p-8 low-poly-bg">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">security</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Vault &amp; Security</h2>
+</div>
+<div class="space-y-6">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">password</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Change Password</p>
+<p class="text-[12px] text-on-surface-variant">Last updated 3 months ago</p>
+</div>
+</div>
+<button class="text-primary font-label-sm text-label-sm hover:underline">UPDATE</button>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">phonelink_lock</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface">Two-Factor Auth</p>
+<p class="text-[12px] text-tertiary">Strongly recommended</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full toggle-bg transition-colors duration-200">
+<div class="toggle-dot absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Notifications Section -->
+<section class="lg:col-span-2 glass-panel rounded-[2rem] p-8 low-poly-bg">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">notifications_active</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Digital Signal Preferences</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-4">
+<h3 class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Delivery Channels</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Email Summaries</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full toggle-bg transition-colors duration-200">
+<div class="toggle-dot absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Push Notifications</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full toggle-bg transition-colors duration-200">
+<div class="toggle-dot absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">SMS Critical Alerts</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full toggle-bg transition-colors duration-200">
+<div class="toggle-dot absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Topic Alerts</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">New Service Deployments</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full toggle-bg transition-colors duration-200">
+<div class="toggle-dot absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Security Login Events</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full toggle-bg transition-colors duration-200">
+<div class="toggle-dot absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-on-surface-variant">Weekly Invoice Ready</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only toggle-switch" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full toggle-bg transition-colors duration-200">
+<div class="toggle-dot absolute top-1 left-1 bg-white w-4 h-4 rounded-full transition-transform duration-200"></div>
+</div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Danger Zone -->
+<div class="mt-12 border-t border-outline-variant/10 pt-12">
+<div class="glass-panel rounded-[2rem] p-8 border-error/20 flex flex-col md:flex-row items-center justify-between gap-6">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-error mb-2">Danger Zone</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Once you delete your account, there is no going back. Please be certain.</p>
+</div>
+<button class="px-8 py-3 rounded-full border border-error text-error font-bold hover:bg-error/10 transition-all active:scale-95">
+                        TERMINATE ACCOUNT
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="md:pl-80 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max-width mx-auto">
+<div class="lg:col-span-1">
+<a class="font-headline-lg-mobile text-headline-lg-mobile font-black text-on-surface" href="{{DATA:SCREEN:SCREEN_109}}">BixiShell</a>
+<p class="mt-4 font-body-md text-body-md text-on-surface-variant max-w-xs">Pioneering the next generation of cloud infrastructure management with crystalline precision.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-secondary mb-6 tracking-widest uppercase">Platforms</h4>
+<ul class="space-y-4">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_103}}">Client Portal</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_105}}">API Documentation</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_103}}">Network Status</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-secondary mb-6 tracking-widest uppercase">Legal</h4>
+<ul class="space-y-4">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_107}}">Privacy Policy</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_107}}">Terms of Service</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_107}}">Data Processing</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-secondary mb-6 tracking-widest uppercase">Connect</h4>
+<ul class="space-y-4">
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_3}}">Instagram</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_3}}">Facebook</a></li>
+<li><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_3}}">Twitter / X</a></li>
+</ul>
+</div>
+</div>
+<div class="px-margin-desktop py-6 border-t border-outline-variant/5 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 BixiShell. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('mobile-drawer');
+            const overlay = document.getElementById('drawer-overlay');
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+                overlay.classList.remove('hidden');
+                document.body.classList.add('overflow-hidden');
+            } else {
+                drawer.classList.add('-translate-x-full');
+                overlay.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        }
+
+        // Micro-interactions for input fields
+        const inputs = document.querySelectorAll('input[type="text"], input[type="email"], textarea');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) label.classList.replace('text-on-surface-variant', 'text-primary');
+            });
+            input.addEventListener('blur', () => {
+                const label = input.parentElement.querySelector('label');
+                if (label) label.classList.replace('text-primary', 'text-on-surface-variant');
+            });
+        });
+
+        // Toggle state simulation
+        const toggles = document.querySelectorAll('.toggle-switch');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                console.log('Preference updated:', e.target.checked);
+            });
+        });
+    </script>
+</body></html>

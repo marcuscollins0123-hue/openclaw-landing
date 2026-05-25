@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BixiShell Client Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800;900&amp;family=Geist:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #0a0a0f;
+            color: #e4e1ed;
+            font-family: 'Hanken Grotesk', sans-serif;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(22, 22, 30, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .geometric-bg {
+            background-image: linear-gradient(30deg, #13131b 12%, transparent 12.5%, transparent 87%, #13131b 87.5%, #13131b),
+            linear-gradient(150deg, #13131b 12%, transparent 12.5%, transparent 87%, #13131b 87.5%, #13131b),
+            linear-gradient(30deg, #13131b 12%, transparent 12.5%, transparent 87%, #13131b 87.5%, #13131b),
+            linear-gradient(150deg, #13131b 12%, transparent 12.5%, transparent 87%, #13131b 87.5%, #13131b),
+            linear-gradient(60deg, #1b1b23 25%, transparent 25.5%, transparent 75%, #1b1b23 75%, #1b1b23),
+            linear-gradient(60deg, #1b1b23 25%, transparent 25.5%, transparent 75%, #1b1b23 75%, #1b1b23);
+            background-size: 80px 140px;
+            background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+            opacity: 0.05;
+        }
+        .glow-primary {
+            box-shadow: 0 0 20px rgba(192, 193, 255, 0.2);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "secondary-container": "#6f00be",
+                "surface-tint": "#c0c1ff",
+                "on-primary": "#1000a9",
+                "primary-fixed": "#e1e0ff",
+                "on-secondary-fixed": "#2c0051",
+                "secondary-fixed-dim": "#ddb7ff",
+                "surface-container-lowest": "#0d0d15",
+                "on-tertiary-fixed-variant": "#703700",
+                "outline": "#908fa0",
+                "inverse-on-surface": "#303038",
+                "surface-bright": "#393841",
+                "secondary-fixed": "#f0dbff",
+                "primary-fixed-dim": "#c0c1ff",
+                "on-error": "#690005",
+                "surface-container-highest": "#34343d",
+                "surface": "#13131b",
+                "on-background": "#e4e1ed",
+                "surface-container": "#1f1f27",
+                "on-tertiary-container": "#452000",
+                "surface-container-low": "#1b1b23",
+                "error-container": "#93000a",
+                "on-surface": "#e4e1ed",
+                "error": "#ffb4ab",
+                "tertiary-fixed": "#ffdcc5",
+                "tertiary-container": "#d97721",
+                "on-primary-fixed-variant": "#2f2ebe",
+                "secondary": "#ddb7ff",
+                "primary": "#c0c1ff",
+                "on-error-container": "#ffdad6",
+                "inverse-surface": "#e4e1ed",
+                "on-surface-variant": "#c7c4d7",
+                "on-secondary-container": "#d6a9ff",
+                "primary-container": "#8083ff",
+                "inverse-primary": "#494bd6",
+                "on-primary-fixed": "#07006c",
+                "on-secondary": "#490080",
+                "tertiary": "#ffb783",
+                "outline-variant": "#464554",
+                "on-tertiary-fixed": "#301400",
+                "background": "#13131b",
+                "on-tertiary": "#4f2500",
+                "surface-container-high": "#292932",
+                "tertiary-fixed-dim": "#ffb783",
+                "on-secondary-fixed-variant": "#6900b3",
+                "surface-dim": "#13131b",
+                "on-primary-container": "#0d0096",
+                "surface-variant": "#34343d"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "container-max-width": "1440px",
+                "gutter": "24px",
+                "margin-desktop": "40px",
+                "margin-mobile": "16px",
+                "unit": "8px"
+              },
+              "fontFamily": {
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "headline-lg": ["Hanken Grotesk"],
+                "display-lg": ["Hanken Grotesk"],
+                "label-sm": ["Geist"],
+                "body-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+    #drawer {
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="bg-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- Navigation Drawer -->
+<aside class="fixed left-0 top-0 h-full z-[60] flex flex-col p-6 bg-surface-container dark:bg-surface-container w-80 shadow-lg -translate-x-full md:translate-x-0" id="drawer">
+<div class="mb-12 flex justify-between items-center">
+<a class="font-headline-lg text-headline-lg font-bold text-primary" href="{{DATA:SCREEN:SCREEN_8}}">BixiShell Portal</a>
+<button class="md:hidden text-on-surface" onclick="toggleDrawer()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-4 bg-primary-container/20 text-primary rounded-xl px-4 py-3 scale-98 transition-transform" href="{{DATA:SCREEN:SCREEN_4}}">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_6}}">
+<span class="material-symbols-outlined" data-icon="token">token</span>
+<span class="font-body-md text-body-md">Services</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_7}}">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-md text-body-md">Invoices</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_3}}">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_9}}">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<div class="my-4 border-t border-outline-variant/10"></div>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_11}}">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-body-md text-body-md">About</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-on-primary">JD</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">James Doe</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Enterprise Tier</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto md:ml-80">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-primary" onclick="toggleDrawer()">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<a class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" href="{{DATA:SCREEN:SCREEN_8}}">BixiShell</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-2 px-4 py-2 rounded-full border border-outline-variant/30 text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+<span class="font-label-sm text-label-sm">Search assets...</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer" data-icon="notifications">notifications</span>
+<a class="material-symbols-outlined text-primary" data-icon="account_circle" href="{{DATA:SCREEN:SCREEN_9}}">account_circle</a>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative pt-28 pb-12 px-margin-mobile md:px-margin-desktop min-h-screen md:ml-80">
+<div class="absolute inset-0 geometric-bg pointer-events-none"></div>
+<div class="max-w-container-max-width mx-auto relative z-10">
+<!-- Hero Header -->
+<section class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface mb-2">Systems Overview</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">Welcome back, James. Your infrastructure is currently performing at peak capacity with no detected anomalies in the last 24 hours.</p>
+</div>
+<button class="bg-gradient-to-r from-primary to-secondary-container text-white font-bold px-8 py-4 rounded-xl flex items-center gap-3 glow-primary active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+                    Scale Infrastructure
+                </button>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
+<!-- Performance Metrics (Spans 2 columns) -->
+<div class="md:col-span-2 glass-panel rounded-[2rem] p-8 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[120px]" data-icon="query_stats">query_stats</span>
+</div>
+<h3 class="font-label-sm text-label-sm text-primary uppercase tracking-[0.2em] mb-8">Performance Metrics</h3>
+<div class="grid grid-cols-2 gap-8">
+<div>
+<p class="text-[48px] font-black text-on-surface leading-none mb-2">99.9<span class="text-primary text-[24px]">%</span></p>
+<p class="font-body-md text-body-md text-on-surface-variant">Infrastructure Uptime</p>
+<div class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[99.9%]"></div>
+</div>
+</div>
+<div>
+<p class="text-[48px] font-black text-on-surface leading-none mb-2">45<span class="text-secondary text-[24px]">ms</span></p>
+<p class="font-body-md text-body-md text-on-surface-variant">AI Response Latency</p>
+<div class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[45%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Service Card -->
+<div class="glass-panel rounded-[2rem] p-8 flex flex-col justify-between border-l-4 border-l-primary cursor-pointer hover:bg-surface-container-high transition-colors group">
+<a class="flex flex-col h-full justify-between" href="{{DATA:SCREEN:SCREEN_6}}">
+<div>
+<div class="flex justify-between items-start mb-6">
+<span class="material-symbols-outlined text-primary text-[32px]" data-icon="memory">memory</span>
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full font-label-sm text-[10px] uppercase font-bold">Active</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg-mobile text-on-surface mb-2">Operations Core</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Cluster: US-East-01</p>
+</div>
+<div class="mt-8 flex items-center justify-between">
+<span class="text-on-surface-variant font-label-sm">8 Nodes online</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary group-hover:translate-x-1 transition-all" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</a>
+</div>
+<!-- Latest Invoice Card -->
+<div class="glass-panel rounded-[2rem] p-8 flex flex-col justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<a class="flex flex-col h-full justify-between" href="{{DATA:SCREEN:SCREEN_7}}">
+<div>
+<span class="material-symbols-outlined text-secondary text-[32px] mb-6" data-icon="account_balance_wallet">account_balance_wallet</span>
+<h3 class="font-headline-lg text-headline-lg-mobile text-on-surface mb-2">Latest Invoice</h3>
+<p class="text-display-lg text-[32px] font-bold text-on-surface">$1,240.00</p>
+</div>
+<div class="mt-auto">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Due: Oct 24, 2024</p>
+</div>
+</a>
+</div>
+<!-- Recent Activity Feed (Spans 2 columns) -->
+<div class="md:col-span-2 glass-panel rounded-[2rem] p-8">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-label-sm text-label-sm text-primary uppercase tracking-[0.2em]">Recent Activity</h3>
+<button class="text-on-surface-variant hover:text-primary font-label-sm flex items-center gap-1 transition-colors">
+                            View All <span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="security">security</span>
+</div>
+<div class="flex-grow">
+<p class="font-body-md text-body-md text-on-surface">Security protocol updated</p>
+<p class="font-label-sm text-[11px] text-on-surface-variant">System-wide • 2 hours ago</p>
+</div>
+<span class="px-3 py-1 border border-outline-variant/30 rounded-full font-label-sm text-[10px] text-on-surface-variant">LOGS</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="cloud_done">cloud_done</span>
+</div>
+<div class="flex-grow">
+<p class="font-body-md text-body-md text-on-surface">Auto-scaling event completed</p>
+<p class="font-label-sm text-[11px] text-on-surface-variant">US-West-02 • 5 hours ago</p>
+</div>
+<span class="px-3 py-1 border border-outline-variant/30 rounded-full font-label-sm text-[10px] text-on-surface-variant">EVENT</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary text-[20px]" data-icon="settings_input_antenna">settings_input_antenna</span>
+</div>
+<div class="flex-grow">
+<p class="font-body-md text-body-md text-on-surface">New API endpoint deployed</p>
+<p class="font-label-sm text-[11px] text-on-surface-variant">Core v2.4.1 • 1 day ago</p>
+</div>
+<span class="px-3 py-1 border border-outline-variant/30 rounded-full font-label-sm text-[10px] text-on-surface-variant">DEPLOY</span>
+</div>
+</div>
+</div>
+<!-- Technical Support Card -->
+<div class="lg:col-span-2 glass-panel rounded-[2rem] p-8 relative overflow-hidden">
+<div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+<div class="w-24 h-24 rounded-full bg-surface-container border border-primary/20 p-1 flex-shrink-0 overflow-hidden">
+<img alt="Support Representative" class="w-full h-full rounded-full object-cover" data-alt="A professional high-tech portrait of a customer support engineer in a modern dark-themed studio." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfF_iSf0c-KU9PZnIQWtMhwOBFEReL7MedmcIXfsAVY5JhEnBYMxTVcs48TZdAjeJt0IXFwQv5TAb2a1ZIJ_Hj7GHjoawjTkJRtZ4Q-A3nxCNpPfAGtN30KFLkh8xNeJha_qtIDBAMjV5WQanW_WnjyfB3Q4iB-OUHiGHMU_GQcC16RQ1zRo1L8FN3ORrJPBnulqjz4lsH1VGG-yDL3_zpcEzV9k8yXcQwbosEwhgjbpHv36CERs2BPu_1ZTfR4wBmJsLNEx4ibVE"/>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg-mobile text-on-surface mb-2">Technical Support</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">Need assistance with your deployment? Our engineers are online and ready to help.</p>
+<div class="flex gap-4">
+<a class="px-6 py-2 rounded-xl border border-primary text-primary font-bold hover:bg-primary/5 transition-colors text-center inline-block" href="{{DATA:SCREEN:SCREEN_3}}">Open Ticket</a>
+<button class="px-6 py-2 rounded-xl bg-surface-container-high text-on-surface font-bold hover:bg-surface-variant transition-colors">Live Chat</button>
+</div>
+</div>
+</div>
+<div class="absolute -right-12 -bottom-12 w-48 h-48 opacity-5">
+<span class="material-symbols-outlined text-[200px]" data-icon="support">support</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="md:ml-80 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 max-w-container-max-width mx-auto">
+<div class="space-y-4">
+<a class="font-headline-lg-mobile text-headline-lg-mobile font-black text-on-surface block" href="{{DATA:SCREEN:SCREEN_8}}">BixiShell</a>
+<p class="font-body-md text-body-md text-on-surface-variant">Next-generation cloud infrastructure orchestration for high-performance AI workloads.</p>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">Platform</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_6}}">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_11}}">About Us</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_4}}">Dashboard</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">Company</h4>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_3}}">Contact</a>
+</div>
+<div class="flex flex-col gap-3">
+<h4 class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">Connect</h4>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="https://instagram.com/bixi.shell" target="_blank"><span class="material-symbols-outlined" data-icon="instagram">camera_alt</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="https://facebook.com/BixiShell" target="_blank"><span class="material-symbols-outlined" data-icon="facebook">social_leaderboard</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined" data-icon="twitter">terminal</span></a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-8">© 2024 BixiShell. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            drawer.classList.toggle('-translate-x-full');
+        }
+
+        document.querySelectorAll('.glass-panel').forEach(panel => {
+            panel.addEventListener('mousemove', e => {
+                const rect = panel.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                panel.style.setProperty('--mouse-x', `${x}px`);
+                panel.style.setProperty('--mouse-y', `${y}px`);
+                
+                // Subtle lift effect on movement
+                panel.style.transform = `perspective(1000px) rotateX(${(y - rect.height/2)/80}deg) rotateY(${-(x - rect.width/2)/80}deg)`;
+            });
+            
+            panel.addEventListener('mouseleave', () => {
+                panel.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+            });
+        });
+
+        // Add CSS for the interactive glow
+        const style = document.createElement('style');
+        style.textContent = `
+            .glass-panel::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(192, 193, 255, 0.05), transparent 40%);
+                opacity: 0;
+                transition: opacity 0.5s;
+                pointer-events: none;
+            }
+            .glass-panel:hover::after {
+                opacity: 1;
+            }
+            .glass-panel {
+                transition: transform 0.3s ease-out, background-color 0.3s ease;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body></html>

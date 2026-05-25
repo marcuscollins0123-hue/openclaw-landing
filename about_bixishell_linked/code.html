@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About BixiShell | The Voice-First Foundation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&amp;family=Geist:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#1f1f27",
+                    "on-background": "#e4e1ed",
+                    "surface-variant": "#34343d",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "secondary-fixed-dim": "#ddb7ff",
+                    "tertiary": "#ffb783",
+                    "surface-bright": "#393841",
+                    "primary": "#c0c1ff",
+                    "outline": "#908fa0",
+                    "surface-container-lowest": "#0d0d15",
+                    "primary-container": "#8083ff",
+                    "surface": "#13131b",
+                    "surface-container-highest": "#34343d",
+                    "outline-variant": "#464554",
+                    "on-secondary-container": "#d6a9ff",
+                    "on-tertiary-fixed": "#301400",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#d97721",
+                    "surface-container-high": "#292932",
+                    "secondary": "#ddb7ff",
+                    "on-error-container": "#ffdad6",
+                    "surface-dim": "#13131b",
+                    "error-container": "#93000a",
+                    "on-error": "#690005",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "on-primary": "#1000a9",
+                    "secondary-container": "#6f00be",
+                    "on-surface": "#e4e1ed",
+                    "inverse-primary": "#494bd6",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "on-secondary-fixed-variant": "#6900b3",
+                    "surface-tint": "#c0c1ff",
+                    "on-tertiary": "#4f2500",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-secondary-fixed": "#2c0051",
+                    "on-tertiary-container": "#452000",
+                    "on-surface-variant": "#c7c4d7",
+                    "primary-fixed": "#e1e0ff",
+                    "inverse-surface": "#e4e1ed",
+                    "inverse-on-surface": "#303038",
+                    "secondary-fixed": "#f0dbff",
+                    "on-primary-container": "#0d0096",
+                    "surface-container-low": "#1b1b23",
+                    "on-secondary": "#490080",
+                    "on-primary-fixed": "#07006c",
+                    "tertiary-fixed": "#ffdcc5",
+                    "background": "#13131b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "8px",
+                    "margin-desktop": "40px",
+                    "container-max-width": "1440px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-sm": ["Geist"],
+                    "display-lg": ["Hanken Grotesk"],
+                    "body-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #13131b;
+            color: #e4e1ed;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(31, 31, 39, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(144, 143, 160, 0.1);
+        }
+        .low-poly-mask {
+            mask-image: linear-gradient(to bottom, black, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+            opacity: 0.15;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(192, 193, 255, 0.15), transparent 50%),
+                        radial-gradient(circle at bottom left, rgba(221, 183, 255, 0.1), transparent 50%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-4" onclick="toggleDrawer()">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<span class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">BixiShell</span>
+</button>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_4}}">Dashboard</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_6}}">Services</a>
+<a class="font-label-sm text-label-sm text-primary font-bold" href="{{DATA:SCREEN:SCREEN_11}}">About</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="{{DATA:SCREEN:SCREEN_3}}">Support</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="flex items-center" href="{{DATA:SCREEN:SCREEN_9}}">
+<span class="material-symbols-outlined text-primary" data-icon="account_circle">account_circle</span>
+</a>
+</div>
+</div>
+</nav>
+<!-- Navigation Drawer (Mobile Only) -->
+<div class="fixed left-0 top-0 h-full z-[60] flex flex-col p-6 bg-surface-container dark:bg-surface-container shadow-lg -translate-x-full transition-transform duration-300 md:hidden w-80" id="drawer">
+<div class="mb-10 flex justify-between items-center">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">BixiShell Portal</span>
+<button class="material-symbols-outlined text-on-surface" onclick="toggleDrawer()">close</button>
+</div>
+<div class="space-y-2">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_4}}">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_6}}">
+<span class="material-symbols-outlined" data-icon="token">token</span>
+<span class="font-body-md text-body-md">Services</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_7}}">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-md text-body-md">Invoices</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container/20 text-primary rounded-xl px-4 py-3 scale-98 transition-transform" href="{{DATA:SCREEN:SCREEN_11}}">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-body-md text-body-md">About</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_3}}">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="{{DATA:SCREEN:SCREEN_9}}">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</div>
+</div>
+<main class="pt-32 pb-20 hero-gradient min-h-screen">
+<div class="max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section / Bento Intro -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-20">
+<div class="lg:col-span-7 flex flex-col justify-center">
+<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase mb-4 block">Our Origin</span>
+<h1 class="font-display-lg text-[40px] md:text-display-lg leading-tight mb-6">
+                        Voice-first isn't a feature,<br/>
+<span class="text-secondary">it's the foundation.</span>
+</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl mb-8 leading-relaxed">
+                        BixiShell was born from a vision of seamless digital interaction. We don't just build portals; we craft responsive ecosystems that understand the nuance of human intent through acoustic precision and linguistic intelligence.
+                    </p>
+<div class="flex items-center gap-6">
+<a class="flex items-center gap-2 group" href="{{DATA:SCREEN:SCREEN_3}}">
+<div class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center group-hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-on-surface text-[20px]" data-icon="link">link</span>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface group-hover:text-primary transition-colors">Instagram (Contact)</span>
+</a>
+</div>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-square glass-card rounded-[2rem] overflow-hidden relative group">
+<!-- Abstract Geometric Image Placeholder -->
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated abstract digital art piece showcasing crystalline low-poly structures with translucent faces. The geometry is rendered in a deep indigo and neon purple color scheme, with glowing edges that catch the light. Sharp angular facets create a sense of digital craftsmanship and technological resilience. The background is a dark, atmospheric void with soft light-leaks in cyan and magenta, echoing a high-tech luminescence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmtFFYDFdmBWzYx57easl0Wm57j8RFQAxSZS3es2QPBo0VkyQinn9h87EZXmjYdybEsRwF0G5c2OyUtAIPznv-2K8gBq9qt9Iwv_5cNkb0ivO8UfvVm2Nq3pfAabGfY26gRX49TuMXLapOxGGQe2uUW9dn5xtBY-4YuyPY5qjzD0o_P9888YXc6zwauL8wroM-6NG0utNseMHJ4Em2jICS-SSDdtiAjG_aIWaNDzyUTEWOGPsT2Qdw23zJ_13wogbi4zdvhy57oZ0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface to-transparent opacity-60"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-primary">Active Vision</span>
+</div>
+<p class="font-headline-lg text-headline-lg-mobile md:text-headline-lg font-bold">Crafting the Future</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Founder Story / Asymmetric Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center">
+<div class="relative order-2 md:order-1">
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 blur-[80px] rounded-full"></div>
+<div class="glass-card p-10 rounded-[2rem] border-primary/20">
+<span class="material-symbols-outlined text-secondary text-5xl mb-6" data-icon="format_quote">format_quote</span>
+<p class="font-body-md text-xl md:text-2xl italic text-on-background mb-8 leading-relaxed">
+                            "Built by the same founder who created Sona Serenity. Every line of code in BixiShell carries the legacy of peace-of-mind, but optimized for the high-velocity world of digital shells."
+                        </p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up portrait of a visionary tech founder in his late 30s with a focused and calm expression. He is wearing a dark minimalist turtleneck against a soft-focus studio background with cool blue and purple ambient lighting. The aesthetic is clean, professional, and sophisticated, emphasizing a human-centric approach to high technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuABYElI86MTVQHMj68-Fy6ER23ZGJRhkyjuCOaC76Q6ssOWWZaI209Sq__rBx4wrPtkvtPJPFpyohnYU-JJIQEbLmJm2d_db9bmhd4MwQ91QeBMHuWLy4DaxO0ze1TCMMXLzLpzDvQQIO_nXj5jBMDgC8O8GWCcxCcgftCAtKSN6K3k7s0IN4PvKoP2VQ7aRnCFQ5cxae7KGwH38uZIkqcxdl_jxPJNT1pm24r-0MoI9AWhyxBmhPxwT1kLpZBZ87YERerBJJ1mZTg"/>
+</div>
+<div>
+<p class="font-label-sm text-sm font-bold">Founder</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">The Visionary behind Sona</p>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2 px-4 md:px-12">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-6">A Legacy of <span class="text-primary">Precision</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+                        The journey didn't start today. It began with Sona Serenity—a quest to harmonize human wellness with technology. BixiShell is the architectural expansion of that philosophy into the portal and shell space.
+                    </p>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="check">check</span>
+</div>
+<span class="font-label-sm text-label-sm">Human-centric acoustic processing</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="check">check</span>
+</div>
+<span class="font-label-sm text-label-sm">Zero-latency feedback loops</span>
+</li>
+<li class="flex items-center gap-3">
+<div class="w-6 h-6 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[16px]" data-icon="check">check</span>
+</div>
+<span class="font-label-sm text-label-sm">End-to-end encrypted vocal signatures</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Visual Texture Section -->
+<div class="mt-32 relative overflow-hidden h-[400px] rounded-[3rem] glass-card">
+<div class="absolute inset-0 low-poly-mask">
+<svg class="fill-primary/20" height="100%" preserveaspectratio="none" viewbox="0 0 100 100" width="100%">
+<path d="M0,0 L50,20 L100,0 L80,50 L100,100 L50,80 L0,100 L20,50 Z"></path>
+</svg>
+</div>
+<div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+<h3 class="font-display-lg text-headline-lg-mobile md:text-display-lg mb-6 max-w-2xl">Geometry Meets Intelligence</h3>
+<p class="font-body-md text-on-surface-variant max-w-xl">
+                        Our design language uses tessellated triangles and crystalline forms to represent the complex data structures we simplify through voice.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-mobile md:px-margin-desktop py-12 max-w-container-max-width mx-auto">
+<div class="lg:col-span-1">
+<a class="font-headline-lg-mobile text-headline-lg-mobile font-black text-on-surface mb-4 block hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_8}}">BixiShell</a>
+<p class="font-label-sm text-label-sm text-on-surface-variant max-w-xs">Elevating the portal experience through voice-first architectural foundations.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-widest">Platform</h4>
+<ul class="space-y-3">
+<li class=""><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_6}}">Services</a></li>
+<li class=""><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_4}}">Dashboard</a></li>
+<li class=""><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_11}}">About</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-widest">Legal</h4>
+<ul class="space-y-3">
+<li class=""><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_3}}">Privacy Policy</a></li>
+<li class=""><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_3}}">Terms of Service</a></li>
+<li class=""><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/50" href="{{DATA:SCREEN:SCREEN_3}}">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm text-primary mb-6 uppercase tracking-widest">Connect</h4>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-xl bg-surface-variant/30 flex items-center justify-center hover:bg-primary-container transition-colors" href="{{DATA:SCREEN:SCREEN_3}}">
+<span class="material-symbols-outlined text-[20px]" data-icon="facebook">social_leaderboard</span>
+</a>
+<a class="w-10 h-10 rounded-xl bg-surface-variant/30 flex items-center justify-center hover:bg-primary-container transition-colors" href="{{DATA:SCREEN:SCREEN_3}}">
+<span class="material-symbols-outlined text-[20px]" data-icon="photo_camera">photo_camera</span>
+</a>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-8">© 2024 BixiShell. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            if (drawer.classList.contains('-translate-x-full')) {
+                drawer.classList.remove('-translate-x-full');
+            } else {
+                drawer.classList.add('-translate-x-full');
+            }
+        }
+
+        // Simple parallax effect for images on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const images = document.querySelectorAll('main img');
+            images.forEach(img => {
+                const speed = 0.05;
+                img.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body></html>
