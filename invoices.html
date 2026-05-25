@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BixiShell - Invoices</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Geist:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(22, 22, 30, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .crystalline-bg {
+            background-image: linear-gradient(30deg, rgba(192, 193, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(192, 193, 255, 0.05) 87.5%, rgba(192, 193, 255, 0.05)),
+                              linear-gradient(150deg, rgba(192, 193, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(192, 193, 255, 0.05) 87.5%, rgba(192, 193, 255, 0.05)),
+                              linear-gradient(30deg, rgba(192, 193, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(192, 193, 255, 0.05) 87.5%, rgba(192, 193, 255, 0.05)),
+                              linear-gradient(150deg, rgba(192, 193, 255, 0.05) 12%, transparent 12.5%, transparent 87%, rgba(192, 193, 255, 0.05) 87.5%, rgba(192, 193, 255, 0.05)),
+                              linear-gradient(60deg, rgba(221, 183, 255, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(221, 183, 255, 0.05) 75%, rgba(221, 183, 255, 0.05)),
+                              linear-gradient(60deg, rgba(221, 183, 255, 0.05) 25%, transparent 25.5%, transparent 75%, rgba(221, 183, 255, 0.05) 75%, rgba(221, 183, 255, 0.05));
+            background-size: 80px 140px;
+        }
+        body {
+            background-color: #0a0a0f;
+            color: #e4e1ed;
+        }
+        #drawer {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-container": "#6f00be",
+                      "surface-tint": "#c0c1ff",
+                      "on-primary": "#1000a9",
+                      "primary-fixed": "#e1e0ff",
+                      "on-secondary-fixed": "#2c0051",
+                      "secondary-fixed-dim": "#ddb7ff",
+                      "surface-container-lowest": "#0d0d15",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "outline": "#908fa0",
+                      "inverse-on-surface": "#303038",
+                      "surface-bright": "#393841",
+                      "secondary-fixed": "#f0dbff",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "on-error": "#690005",
+                      "surface-container-highest": "#34343d",
+                      "surface": "#13131b",
+                      "on-background": "#e4e1ed",
+                      "surface-container": "#1f1f27",
+                      "on-tertiary-container": "#452000",
+                      "surface-container-low": "#1b1b23",
+                      "error-container": "#93000a",
+                      "on-surface": "#e4e1ed",
+                      "error": "#ffb4ab",
+                      "tertiary-fixed": "#ffdcc5",
+                      "tertiary-container": "#d97721",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "secondary": "#ddb7ff",
+                      "primary": "#c0c1ff",
+                      "on-error-container": "#ffdad6",
+                      "inverse-surface": "#e4e1ed",
+                      "on-surface-variant": "#c7c4d7",
+                      "on-secondary-container": "#d6a9ff",
+                      "primary-container": "#8083ff",
+                      "inverse-primary": "#494bd6",
+                      "on-primary-fixed": "#07006c",
+                      "on-secondary": "#490080",
+                      "tertiary": "#ffb783",
+                      "outline-variant": "#464554",
+                      "on-tertiary-fixed": "#301400",
+                      "background": "#13131b",
+                      "on-tertiary": "#4f2500",
+                      "surface-container-high": "#292932",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "on-secondary-fixed-variant": "#6900b3",
+                      "surface-dim": "#13131b",
+                      "on-primary-container": "#0d0096",
+                      "surface-variant": "#34343d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-max-width": "1440px",
+                      "gutter": "24px",
+                      "margin-desktop": "40px",
+                      "margin-mobile": "16px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "headline-lg-mobile": ["Hanken Grotesk"],
+                      "headline-lg": ["Hanken Grotesk"],
+                      "display-lg": ["Hanken Grotesk"],
+                      "label-sm": ["Geist"],
+                      "body-md": ["Hanken Grotesk"]
+              },
+              "fontSize": {
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="dark overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/10">
+<div class="flex justify-between items-center h-20 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<div class="flex items-center gap-4">
+<button class="lg:hidden text-primary" onclick="toggleDrawer()">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<a class="font-headline-lg text-headline-lg font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent" href="index.html">BixiShell</a>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="dashboard.html">Dashboard</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="services.html">Services</a>
+<a class="font-label-sm text-label-sm text-primary dark:text-primary-fixed-dim font-bold" href="invoices.html">Invoices</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="contact.html">Support</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary transition-colors duration-300" href="settings.html">Settings</a>
+</div>
+<div class="flex items-center gap-4">
+<a class="material-symbols-outlined text-primary" data-icon="account_circle" href="settings.html">account_circle</a>
+</div>
+</div>
+</header>
+<!-- Side Navigation (Visible on Large Screens) -->
+<aside class="fixed left-0 top-0 h-full z-[60] flex flex-col p-6 w-80 bg-surface-container dark:bg-surface-container shadow-lg -translate-x-full lg:translate-x-0 transition-transform duration-300" id="drawer">
+<div class="mb-10 flex items-center justify-between">
+<a class="font-headline-lg text-headline-lg font-bold text-primary" href="index.html">BixiShell Portal</a>
+<button class="lg:hidden text-on-surface" onclick="toggleDrawer()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="services.html">
+<span class="material-symbols-outlined" data-icon="token">token</span>
+<span class="font-body-md text-body-md">Services</span>
+</a>
+<a class="flex items-center gap-4 bg-primary-container/20 text-primary rounded-xl px-4 py-3 scale-98 transition-transform" href="invoices.html">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-md text-body-md">Invoices</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="contact.html">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-body-md text-body-md">Support</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="settings.html">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+<div class="my-4 border-t border-outline-variant/10"></div>
+<a class="flex items-center gap-4 text-on-surface-variant px-4 py-3 hover:bg-surface-variant/30 rounded-xl transition-all" href="about.html">
+<span class="material-symbols-outlined" data-icon="info">info</span>
+<span class="font-body-md text-body-md">About</span>
+</a>
+</nav>
+<div class="mt-auto pt-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center font-bold text-on-primary">JD</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface">James Doe</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Enterprise Tier</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:pl-80 pt-24 min-h-screen crystalline-bg">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto pb-24">
+<!-- Page Header -->
+<div class="mb-10">
+<h1 class="font-display-lg text-display-lg text-on-surface mb-2">Billing &amp; Invoices</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage your billing history and subscription status.</p>
+</div>
+<!-- Summary Section: Bento Grid Style -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+<!-- Current Balance Card -->
+<div class="glass-panel p-8 rounded-full relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[120px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="relative z-10">
+<p class="font-label-sm text-label-sm text-primary uppercase tracking-widest mb-2">Current Balance</p>
+<h2 class="text-[40px] font-bold text-on-surface mb-1">$1,240.50</h2>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm" data-icon="info">info</span>
+<p class="font-label-sm text-label-sm">Due in 12 days</p>
+</div>
+</div>
+<div class="mt-6 flex gap-4">
+<button class="bg-gradient-to-r from-primary to-secondary text-on-primary font-bold px-6 py-2 rounded-xl text-label-sm hover:opacity-90 active:scale-95 transition-all">Pay Now</button>
+</div>
+</div>
+<!-- Next Billing Date Card -->
+<div class="glass-panel p-8 rounded-full flex flex-col justify-between">
+<div>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest mb-2">Next Billing Date</p>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Oct 28, 2024</h2>
+</div>
+<div class="mt-4 p-4 bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex justify-between items-center mb-1">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Auto-pay Status</span>
+<span class="px-2 py-1 bg-primary/10 text-primary rounded-lg text-[10px] font-bold">ACTIVE</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Ending in •••• 4242</p>
+</div>
+</div>
+<!-- Plan Stats (Asymmetric Layout element) -->
+<div class="glass-panel p-8 rounded-full md:col-span-2 lg:col-span-1 border-primary/20 bg-primary-container/5">
+<p class="font-label-sm text-label-sm text-tertiary uppercase tracking-widest mb-4">Plan Usage</p>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-label-sm mb-1">
+<span class="text-on-surface">API Requests</span>
+<span class="text-on-surface-variant">84%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[84%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-label-sm mb-1">
+<span class="text-on-surface">Compute Hours</span>
+<span class="text-on-surface-variant">42%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[42%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Invoices Table Section -->
+<div class="glass-panel rounded-full overflow-hidden">
+<div class="px-8 py-6 border-b border-outline-variant/10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+<h3 class="font-headline-lg text-headline-lg text-on-surface">Billing History</h3>
+<div class="flex items-center gap-2 bg-surface-container-low border border-outline-variant/10 px-4 py-2 rounded-xl">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-sm text-on-surface w-48 p-0 placeholder:text-on-surface-variant/50" placeholder="Search by ID or Month..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container/50">
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Invoice ID</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Date</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Amount</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Status</th>
+<th class="px-8 py-4 font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-variant/10 transition-colors group">
+<td class="px-8 py-5">
+<span class="font-body-md text-body-md text-on-surface">INV-2024-009</span>
+</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">Sep 15, 2024</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface font-bold">$450.00</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[11px] font-bold">
+<span class="w-1 h-1 rounded-full bg-emerald-400"></span>
+                                        PAID
+                                    </span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-all p-2 rounded-lg hover:bg-primary/10">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-variant/10 transition-colors group">
+<td class="px-8 py-5">
+<span class="font-body-md text-body-md text-on-surface">INV-2024-008</span>
+</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">Aug 15, 2024</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface font-bold">$390.50</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-[11px] font-bold">
+<span class="w-1 h-1 rounded-full bg-primary"></span>
+                                        PENDING
+                                    </span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-all p-2 rounded-lg hover:bg-primary/10">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-variant/10 transition-colors group">
+<td class="px-8 py-5">
+<span class="font-body-md text-body-md text-on-surface">INV-2024-007</span>
+</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface-variant">Jul 15, 2024</td>
+<td class="px-8 py-5 font-body-md text-body-md text-on-surface font-bold">$400.00</td>
+<td class="px-8 py-5">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-[11px] font-bold">
+<span class="w-1 h-1 rounded-full bg-emerald-400"></span>
+                                        PAID
+                                    </span>
+</td>
+<td class="px-8 py-5 text-right">
+<button class="text-on-surface-variant hover:text-primary transition-all p-2 rounded-lg hover:bg-primary/10">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-6 flex justify-between items-center bg-surface-container/30">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Showing 3 of 24 invoices</p>
+<div class="flex gap-2">
+<button class="p-2 border border-outline-variant/20 rounded-xl hover:bg-surface-container transition-colors disabled:opacity-30" disabled="">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-2 border border-outline-variant/20 rounded-xl hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="lg:pl-80 bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter px-margin-desktop py-12 max-w-container-max-width mx-auto">
+<div class="lg:col-span-2">
+<a class="font-headline-lg-mobile text-headline-lg-mobile font-black text-on-surface block mb-4" href="index.html">BixiShell</a>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">High-performance shell infrastructure for the next generation of cloud computing. Secure, scalable, and luminous.</p>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm font-bold text-primary uppercase mb-4">Platform</h4>
+<ul class="space-y-2">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors hover:underline decoration-primary/50" href="services.html">Services</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors hover:underline decoration-primary/50" href="about.html">About Us</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors hover:underline decoration-primary/50" href="dashboard.html">Dashboard</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm font-bold text-primary uppercase mb-4">Legal</h4>
+<ul class="space-y-2">
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors hover:underline decoration-primary/50" href="#">Privacy Policy</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors hover:underline decoration-primary/50" href="#">Terms of Service</a></li>
+<li><a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-container transition-colors hover:underline decoration-primary/50" href="contact.html">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="px-margin-desktop py-6 border-t border-outline-variant/5 text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 BixiShell. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            drawer.classList.toggle('-translate-x-full');
+        }
+
+        // Micro-interaction for hover states and transitions
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                const icon = row.querySelector('.material-symbols-outlined[data-icon="download"]');
+                if (icon) icon.classList.add('scale-110');
+            });
+            row.addEventListener('mouseleave', () => {
+                const icon = row.querySelector('.material-symbols-outlined[data-icon="download"]');
+                if (icon) icon.classList.remove('scale-110');
+            });
+        });
+    </script>
+</body></html>
