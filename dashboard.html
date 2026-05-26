@@ -224,17 +224,17 @@
 <h3 class="font-label-sm text-label-sm text-primary uppercase tracking-[0.2em] mb-8">Performance Metrics</h3>
 <div class="grid grid-cols-2 gap-8">
 <div>
-<p class="text-[48px] font-black text-on-surface leading-none mb-2">99.9<span class="text-primary text-[24px]">%</span></p>
+<p class="text-[48px] font-black text-on-surface leading-none mb-2" id="uptime-value">99.9<span class="text-primary text-[24px]">%</span></p>
 <p class="font-body-md text-body-md text-on-surface-variant">Infrastructure Uptime</p>
 <div class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden">
-<div class="h-full bg-primary w-[99.9%]"></div>
+<div class="h-full bg-primary w-[99.9%]" id="uptime-bar"></div>
 </div>
 </div>
 <div>
-<p class="text-[48px] font-black text-on-surface leading-none mb-2">45<span class="text-secondary text-[24px]">ms</span></p>
+<p class="text-[48px] font-black text-on-surface leading-none mb-2" id="latency-value">45<span class="text-secondary text-[24px]">ms</span></p>
 <p class="font-body-md text-body-md text-on-surface-variant">AI Response Latency</p>
 <div class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden">
-<div class="h-full bg-secondary w-[45%]"></div>
+<div class="h-full bg-secondary w-[45%]" id="latency-bar"></div>
 </div>
 </div>
 </div>
@@ -251,7 +251,7 @@
 <p class="font-body-md text-body-md text-on-surface-variant">Cluster: US-East-01</p>
 </div>
 <div class="mt-8 flex items-center justify-between">
-<span class="text-on-surface-variant font-label-sm">8 Nodes online</span>
+<span class="text-on-surface-variant font-label-sm" id="nodes-online">8 Nodes online</span>
 <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary group-hover:translate-x-1 transition-all" data-icon="arrow_forward">arrow_forward</span>
 </div>
 </a>
@@ -262,10 +262,10 @@
 <div>
 <span class="material-symbols-outlined text-secondary text-[32px] mb-6" data-icon="account_balance_wallet">account_balance_wallet</span>
 <h3 class="font-headline-lg text-headline-lg-mobile text-on-surface mb-2">Latest Invoice</h3>
-<p class="text-display-lg text-[32px] font-bold text-on-surface">$1,240.00</p>
+<p class="text-display-lg text-[32px] font-bold text-on-surface" id="latest-invoice">$1,240.00</p>
 </div>
 <div class="mt-auto">
-<p class="font-label-sm text-label-sm text-on-surface-variant">Due: Oct 24, 2024</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant" id="invoice-due">Due: Oct 24, 2024</p>
 </div>
 </a>
 </div>
@@ -406,4 +406,50 @@
         `;
         document.head.appendChild(style);
     </script>
+
+<script>
+    async function loadDashboardData() {
+        try {
+            const res = await fetch('https://api.bixishell.com/api/dashboard');
+            const data = await res.json();
+            
+            if (data.uptime_hours !== undefined && document.getElementById('uptime-value')) {
+                const uptime = parseFloat(data.uptime_hours);
+                const pct = Math.min(99.99, uptime > 100 ? 99.9 : uptime).toFixed(1);
+                document.getElementById('uptime-value').innerHTML = pct + '<span class="text-primary text-[24px]">%</span>';
+                if (document.getElementById('uptime-bar')) {
+                    document.getElementById('uptime-bar').style.width = pct + '%';
+                }
+            }
+            if (data.latency_ms !== undefined && document.getElementById('latency-value')) {
+                const lat = data.latency_ms;
+                document.getElementById('latency-value').innerHTML = lat + '<span class="text-secondary text-[24px]">ms</span>';
+                if (document.getElementById('latency-bar')) {
+                    document.getElementById('latency-bar').style.width = Math.min(100, parseInt(lat)) + '%';
+                }
+            }
+            if (data.active_shells !== undefined && document.getElementById('nodes-online')) {
+                document.getElementById('nodes-online').textContent = data.active_shells + ' Nodes online';
+            }
+        } catch(e) {
+            console.log('Dashboard live data unavailable, using defaults');
+        }
+        
+        try {
+            const res2 = await fetch('https://api.bixishell.com/api/invoices/summary');
+            const inv = await res2.json();
+            
+            if (inv.balance !== undefined && document.getElementById('latest-invoice')) {
+                document.getElementById('latest-invoice').textContent = '$' + parseFloat(inv.balance).toFixed(2);
+            }
+            if (inv.next_billing && document.getElementById('invoice-due')) {
+                const d = new Date(inv.next_billing);
+                document.getElementById('invoice-due').textContent = 'Due: ' + d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+            }
+        } catch(e) {
+            console.log('Invoice summary unavailable, using defaults');
+        }
+    }
+    document.addEventListener('DOMContentLoaded', loadDashboardData);
+</script>
 </body></html>
