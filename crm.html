@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta name="color-scheme" content="dark">
+<title>BixiShell — CRM</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;900&family=Geist:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<style>
+    html { color-scheme: dark; }
+    body { background-color: #0a0a0f; color: #e4e1ed; font-family: 'Hanken Grotesk', sans-serif; }
+    .glass-panel { background: rgba(22,22,30,0.8); backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.1); }
+    .input-field { background:#000; border:1px solid rgba(144,143,160,0.3); color:#fff; width:100%; padding:10px 14px; border-radius:8px; outline:none; font-weight:600; }
+    .input-field:focus { border-color:#c0c1ff; }
+    .badge-new { background: rgba(192,193,255,0.15); color: #c0c1ff; }
+    .badge-chat { background: rgba(221,183,255,0.15); color: #ddb7ff; }
+    .badge-contact { background: rgba(255,183,131,0.15); color: #ffb783; }
+</style>
+</head>
+<body>
+<div class="max-w-6xl mx-auto px-6 py-8">
+    <div class="flex items-center justify-between mb-10">
+        <div>
+            <h1 class="text-4xl font-bold text-[#c0c1ff]">Leads</h1>
+            <p class="text-[#c7c4d7] mt-1">Internal CRM — tracking contacts and enquiries</p>
+        </div>
+        <a href="index.html" class="text-[#c7c4d7] hover:text-[#c0c1ff] transition-colors text-sm">Back to site</a>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6 mb-10" id="stats-row">
+        <div class="glass-panel rounded-xl p-6 text-center">
+            <p class="text-3xl font-bold text-white" id="stat-total">-</p>
+            <p class="text-sm text-[#c7c4d7] mt-1">Total Leads</p>
+        </div>
+        <div class="glass-panel rounded-xl p-6 text-center">
+            <p class="text-3xl font-bold text-[#c0c1ff]" id="stat-active">-</p>
+            <p class="text-sm text-[#c7c4d7] mt-1">Active</p>
+        </div>
+        <div class="glass-panel rounded-xl p-6 text-center">
+            <p class="text-3xl font-bold text-[#ffb783]" id="stat-unread">-</p>
+            <p class="text-sm text-[#c7c4d7] mt-1">Unread</p>
+        </div>
+    </div>
+
+    <div class="glass-panel rounded-xl overflow-hidden">
+        <div class="p-5 border-b border-white/5 flex justify-between items-center">
+            <h2 class="font-semibold">All Enquiries</h2>
+            <span class="text-xs text-[#c7c4d7]" id="lead-count"></span>
+        </div>
+        <div id="leads-list" class="divide-y divide-white/5"></div>
+    </div>
+</div>
+
+<script>
+async function loadCRM() {
+    try {
+        const [leadsRes, statsRes] = await Promise.all([
+            fetch('https://api.bixishell.com/api/crm/leads'),
+            fetch('https://api.bixishell.com/api/crm/stats')
+        ]);
+        const leads = await leadsRes.json();
+        const stats = await statsRes.json();
+
+        document.getElementById('stat-total').textContent = stats.total_leads || leads.length;
+        document.getElementById('stat-active').textContent = stats.active_leads || 0;
+        document.getElementById('stat-unread').textContent = stats.unread_messages || 0;
+        document.getElementById('lead-count').textContent = leads.length + ' entries';
+
+        const list = document.getElementById('leads-list');
+        list.innerHTML = leads.map(l => {
+            const sourceBadge = l.source === 'chat' ? 'badge-chat' : 'badge-contact';
+            const statusBadge = l.status === 'new' || l.status === 'active' ? 'badge-new' : '';
+            return '<div class="p-5 hover:bg-white/[0.02] transition-colors flex items-start justify-between gap-4">' +
+                '<div class="flex-1 min-w-0">' +
+                    '<div class="flex items-center gap-3 mb-1">' +
+                        '<span class="font-semibold text-white truncate">' + (l.name || 'Guest') + '</span>' +
+                        '<span class="px-2 py-0.5 rounded text-[10px] font-medium uppercase ' + sourceBadge + '">' + l.source + '</span>' +
+                        '<span class="px-2 py-0.5 rounded text-[10px] font-medium uppercase ' + statusBadge + '">' + l.status + '</span>' +
+                    '</div>' +
+                    '<p class="text-sm text-[#c7c4d7] truncate">' + (l.last_message || 'No message') + '</p>' +
+                    '<p class="text-xs text-[#908fa0] mt-1">' + (l.email || '') + '</p>' +
+                '</div>' +
+                '<div class="text-xs text-[#908fa0] shrink-0">' + new Date(l.date + 'Z').toLocaleString() + '</div>' +
+            '</div>';
+        }).join('');
+    } catch(e) {
+        document.getElementById('leads-list').innerHTML = '<div class="p-8 text-center text-[#908fa0]">Could not load leads. API not available offline.</div>';
+    }
+}
+loadCRM();
+setInterval(loadCRM, 30000);
+</script>
+</body></html>
