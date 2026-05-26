@@ -419,7 +419,7 @@
             if (tbody && invoices.length) {
                 tbody.innerHTML = invoices.map(inv => {
                     const statusClass = inv.status === 'paid' ? 'text-green-400' : 'text-yellow-400';
-                    return \`
+                    return `
                         <tr class="hover:bg-surface-variant/10 transition-colors group">
                             <td class="px-8 py-5"><span class="font-body-md text-on-surface">\${inv.invoice_id}</span></td>
                             <td class="px-8 py-5 text-on-surface-variant">\${inv.date}</td>
@@ -429,7 +429,7 @@
                                 <a class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-colors cursor-pointer text-xl">download</a>
                             </td>
                         </tr>
-                    \`;
+                    `;
                 }).join('');
             }
         } catch(e) {
