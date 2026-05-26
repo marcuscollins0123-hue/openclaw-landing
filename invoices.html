@@ -438,6 +438,8 @@
     }
     document.addEventListener('DOMContentLoaded', loadInvoiceData);
 </script>
+
+
 <!-- BixiShell Live Chat Widget -->
 <script>
 (function() {
@@ -547,6 +549,16 @@
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({session_id: SESSION, message: text})
             });
+            // Fetch auto-reply
+            const res = await fetch(API + '/messages/' + SESSION);
+            const msgs = await res.json();
+            const msgDiv2 = document.getElementById('bixi-chat-messages');
+            msgDiv2.innerHTML = msgs.map(m => {
+                const cls = m.sender === 'visitor' ? 'visitor' : 'agent';
+                const time = new Date(m.created_at + 'Z').toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+                return '<div class="bixi-msg ' + cls + '">' + m.message + '<div class="time">' + time + '</div></div>';
+            }).join('');
+            msgDiv2.scrollTop = msgDiv2.scrollHeight;
         } catch(e) {}
     }
 
